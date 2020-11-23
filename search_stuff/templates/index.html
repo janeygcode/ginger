@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<div class="mx-auto" style="width: 800px;">
+<h1>gas station bathroom stall messages app</h1><BR><BR>
+<div class="row">
+{% for stuff in all_stuff %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">{{ stuff.name }}</h5>
+                <p class="card-text">{{ stuff.description }}</p>
+                <a href="{% url 'stuff_detail' stuff.pk %}"
+                   class="btn btn-primary">
+                    see closer
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<BR><BR>
+
+
+<h2>add a message to the stall!!!1</h2>
+<form action="{% url 'stuff_index' %}" method="post">
+    {% csrf_token %}
+  <input name="name" type="text" placeholder=" my message"><br>
+    <button type="submit">Submit</button>
+</form>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+
+<h1>Search Results for {{ query }}</h1>
+
+<ul>
+  {% for stuff in object_list %}
+    <li>
+      <a href="{% url 'stuff_detail' stuff.pk %}"
+                   class="btn btn-primary">{{ stuff.name }}</a> {{ stuff.description }}<br>
+    </li>
+  {% endfor %}
+</ul>
+<br>
+
+
+{% endblock %}
